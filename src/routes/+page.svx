@@ -1,0 +1,12 @@
+<script>
+    import LayoutLoader from '$lib/layouts/LayoutLoader.svelte'
+
+	/** @type {import('./$types').PageData */
+	export let data;
+
+	let { Page, meta, _subpages } = data;
+</script>
+
+<LayoutLoader {meta}>
+	<svelte:component this={Page} {_subpages} />
+</LayoutLoader>
