@@ -1,11 +1,11 @@
 <script context="module">
 
-    async function loadLayouts() {
+    async function loadTemplates() {
         const files = await import.meta.globEager(`./*.{svelte,md,svx}`);
         return files;
     }
 
-    const layouts = loadLayouts();
+    const templates = loadTemplates();
 
 </script>
 
@@ -13,7 +13,7 @@
     export let meta;
     export let template = meta.template ?? 'default';
     export let depth = 0;
-    let LayoutComponent;
+    let TemplateComponent;
     let templatesArray = template.split(',')
     let currentTemplate = templatesArray[depth];
     let nextDepth = depth + 1;
@@ -28,7 +28,7 @@
   
 
     $: if(currentTemplate != ''){
-        layouts.then(function(value) {
+        templates.then(function(value) {
             let match;
             for (const [path, resolver] of Object.entries(value)) {
                 let filename = path.slice(0, path.lastIndexOf("."));
@@ -40,7 +40,7 @@
             }
             // console.log(match)
             if(match){
-                LayoutComponent = match[1]?.default;
+                TemplateComponent = match[1]?.default;
             }
         });
     }
@@ -48,8 +48,8 @@
 </script>
 
 {#if depth < templatesArray.length}
-    {#if LayoutComponent != undefined}
-        <svelte:component this={LayoutComponent} {meta}>
+    {#if TemplateComponent != undefined}
+        <svelte:component this={TemplateComponent} {meta}>
                 <svelte:self depth={nextDepth} {meta}>
                     <slot />
                 </svelte:self>
@@ -60,8 +60,8 @@
         </svelte:self>
     {/if}
 {:else}
-    {#if LayoutComponent != undefined}
-        <svelte:component this={LayoutComponent} {meta}>
+    {#if TemplateComponent != undefined}
+        <svelte:component this={TemplateComponent} {meta}>
             <slot />
         </svelte:component>
     {:else}

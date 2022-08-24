@@ -4,30 +4,36 @@
     import ImageSwiper from '$lib/components/ImageSwiper.svelte';
 
     let classes = $$restProps.class ?? ''
-    let [template, ...options] = classes?.split(" ") ?? ['', []];
-    template = template.toLowerCase();
+    let [output, ...options] = classes?.split(" ") ?? ['', []];
+    output = output.toLowerCase();
 
     // console.log(options)
+
+    function throwError(e){
+        console.error(`Output '${e}' not found!`);
+        throw new Error(`Output '${e}' not found!`);
+    }
 </script>
 
-{#if template === 'typewriter'}
+{#if output === 'typewriter'}
     <Typewriter {...$$restProps}>
         <slot />
     </Typewriter>
-{:else if template === 'gap'}
+{:else if output === 'gap'}
     <Gap h={options[0]} />
-{:else if template === 'swiper'}
+{:else if output === 'swiper'}
     <ImageSwiper>
         <slot />
     </ImageSwiper>
 {:else}
-    <div class='no-template-found' {...$$restProps}>
+    {throwError(output)}
+    <div class='no-output-found'>
         <slot />
     </div>
 {/if}
 
 <style>
-    .no-template-found {
+    .no-output-found {
         background: red;
     }
 </style>

@@ -7,9 +7,9 @@ published: true
 
 .de.svx file
 
-::: template typewriter low width='500px,3em'
+::: output typewriter
 
-    TypeWriter Template
+    TypeWriter 
 
 :::
 
@@ -20,12 +20,6 @@ published: true
 - gfdgfd
 - gfdgfdg
 
-
-::: template
-
-    Kein Template
-
-:::
 
 Import image with 300px width and dont show figcaption (! in front of alt text)
 
@@ -41,7 +35,7 @@ Import tiff image
 
 Import all images from subfolder and use them in swiper.js
 
-::: template swiper
+::: output swiper
 
     ![](./*/*.{jpg,jpeg,png}|h=400|w=auto|swiper=true)
 

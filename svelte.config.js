@@ -10,9 +10,13 @@ const config = {
 
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: [preprocess(), mdsvex(mdsvexConfig)],
+	preprocess: [
+		mdsvex(mdsvexConfig),
+		preprocess()
+	],
 
 	kit: {
+		trailingSlash: 'always',
 		adapter: adapter({
 			// default options are shown
 			pages: 'build',
@@ -20,13 +24,11 @@ const config = {
 			fallback: null,
 			precompress: true
 		}),
-
 		prerender: {
 			// This can be false if you're using a fallback (i.e. SPA mode)
-			default: true
-		},
-        
-        trailingSlash: 'always'
+			default: true,
+			onError: 'continue'
+		}
 	}
 };
 
