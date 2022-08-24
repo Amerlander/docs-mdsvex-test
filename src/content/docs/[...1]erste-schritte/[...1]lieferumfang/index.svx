@@ -1,7 +1,7 @@
 ---
 title: Lieferumfang
 description: Hier findet ihr eine Übersicht über den Lieferumfang der unterschiedlichen Pakete des Calliope mini.
-template: 
+template: docs
 published: true
 ---
 
@@ -9,7 +9,6 @@ published: true
 # {title}
 
 {description}
-
 
 ## Lieferumfang
 Der Calliope mini ist als Klassensatz und einzeln als Starterbox erhältlich.

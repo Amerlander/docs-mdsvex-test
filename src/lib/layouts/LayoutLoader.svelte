@@ -11,18 +11,29 @@
 
 <script>
     export let meta;
-    export let template = meta.template ?? '';
-    let [currentLayout, ...restLayouts] = template.split(',');
-    template = restLayouts.join(',')
+    export let template = meta.template ?? 'default';
+    export let depth = 0;
     let LayoutComponent;
+    let templatesArray = template.split(',')
+    let currentTemplate = templatesArray[depth];
+    let nextDepth = depth + 1;
 
-    if(currentLayout != ''){
+    function changeTemplate(tmpl) {
+        templatesArray = tmpl.split(',')
+        currentTemplate = templatesArray[depth];
+    }
+
+    $: template = meta.template ?? 'default';
+    $: changeTemplate(template);
+  
+
+    $: if(currentTemplate != ''){
         layouts.then(function(value) {
             let match;
             for (const [path, resolver] of Object.entries(value)) {
                 let filename = path.slice(0, path.lastIndexOf("."));
                 // console.log(filename)
-                if (filename === `./__layout-${currentLayout}`) {
+                if (filename === `./__layout-${currentTemplate}`) {
                     match = [path, resolver];
                     break;
                 }
@@ -36,15 +47,15 @@
 
 </script>
 
-{#if currentLayout != ''}
+{#if depth < templatesArray.length}
     {#if LayoutComponent != undefined}
         <svelte:component this={LayoutComponent} {meta}>
-                <svelte:self {template} {meta}>
+                <svelte:self depth={nextDepth} {meta}>
                     <slot />
                 </svelte:self>
         </svelte:component>
     {:else}
-        <svelte:self {template} {meta}>
+        <svelte:self depth={nextDepth} {meta}>
             <slot />
         </svelte:self>
     {/if}

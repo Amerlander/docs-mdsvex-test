@@ -1,7 +1,6 @@
 import { error } from '@sveltejs/kit';
 
 import { slugFromPath } from '$lib/util';
-import LayoutLoader from '$lib/layouts/LayoutLoader.svelte'
 
 /**
  * @type {import('@sveltejs/kit').PageLoad}

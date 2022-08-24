@@ -1,7 +1,7 @@
 ---
 title: Aufbauen & Anschließen
 description: Hier erfahrt ihr, wie ihr den Calliope mini in Betrieb nehmt.
-template: 
+template: docs
 published: true
 ---
 

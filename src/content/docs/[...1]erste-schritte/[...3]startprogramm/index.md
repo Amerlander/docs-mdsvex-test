@@ -1,7 +1,7 @@
 ---
 title: Startprogramm (Programm 25)
 description: Der Calliope mini kommt mit dem vorinstallierten Programm, das dir einen Startpunkt in der Nutzung bieten soll.
-template: 
+template: docs
 published: true
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: Pins und Schnittstellen
 description: Der Calliope mini verfügt über diverse Schnittstellen mit unterschiedlichen Protokollen, die programmiert werden können und womit Daten ausgetauscht werden.
+template: docs
+published: true
 ---
 
 # {title} 

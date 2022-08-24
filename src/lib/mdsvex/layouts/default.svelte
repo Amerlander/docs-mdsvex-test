@@ -10,7 +10,7 @@
 
 	onMount(() => {
 		if (browser) {
-		document.lazyloadInstance.update();
+			document.lazyloadInstance.update();
 		}
 	});
 </script>

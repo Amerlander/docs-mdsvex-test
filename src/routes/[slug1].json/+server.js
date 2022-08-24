@@ -8,7 +8,7 @@ import { slugFromPath,  } from '$lib/util';
 // const pathname = $page.url.pathname;
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function get({ url, params }) {
+export async function GET({ url, params }) {
 	let modules = [];
 	let folder = '';
 	if(params.slug1 === 'index'){
@@ -58,7 +58,5 @@ export async function get({ url, params }) {
 	// 	publishedPosts.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
 	// }
 
-	return {
-		body: publishedPosts.slice(0, limit)
-	};
+	return new Response(JSON.stringify(publishedPosts.slice(0, limit)));
 }

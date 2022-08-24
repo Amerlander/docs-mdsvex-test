@@ -1,6 +1,8 @@
 ---
 title: Unterschiede und Gemeinsamkeiten der mini Versionen v0.3, v1.3, v2
 description: Hauptunterschiede zwischen den Calliope mini Versionen v0.3, v1.3 und v2.
+template: docs
+published: true
 ---
 
 # {title}

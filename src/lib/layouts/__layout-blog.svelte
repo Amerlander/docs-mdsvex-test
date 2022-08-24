@@ -6,9 +6,13 @@
 	export let meta;
 </script>
 
-<PageHead title={meta.title} description={meta.description} />
+<main>
+	
+	<PageHead title={meta.title} description={meta.description} />
 
-<ArticleTitle title={meta.title} />
-<ArticleMeta author={meta.author} date={meta.date} />
+	<ArticleTitle title={meta.title} />
+	<ArticleMeta author={meta.author} date={meta.date} />
 
-<slot />
+	<slot />
+
+</main>

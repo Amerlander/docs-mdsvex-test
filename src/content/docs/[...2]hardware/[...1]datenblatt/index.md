@@ -1,7 +1,7 @@
 ---
 title: Datenblatt
-description:
-template: 
+description: ...
+template: docs
 published: true
 ---
 

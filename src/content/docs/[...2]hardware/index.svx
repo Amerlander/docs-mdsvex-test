@@ -1,9 +1,9 @@
 ---
 title: Hardware
-description:
-template: 
+description: 
+template: docs
 published: true
 ---
 
 
-  {title}
+{title}
