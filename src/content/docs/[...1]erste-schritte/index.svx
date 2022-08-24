@@ -1,8 +1,9 @@
 ---
 title: Erste Schritte
 description: 
-template: docs
+template: docs_contents
 published: true
 ---
 
 Erste Schritte
+

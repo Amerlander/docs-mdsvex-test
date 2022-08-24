@@ -5,15 +5,11 @@ template: docs
 published: true
 ---
 
-
 # {title}
 
-{description}
-
-## Lieferumfang
 Der Calliope mini ist als Klassensatz und einzeln als Starterbox erhältlich.
 
-### Klassensatz Grundschule
+## Klassensatz Grundschule
  
 Dem Calliope mini Klassensatz für Grundschulen liegen neben den Handreichungen für Schüler:innen und Lehrkräfte auch Krokoklemmen, Kupferklebeband und LEDs bei und kann bei Cornelsen Experimenta erworben werden. Eine Angebotsanfrage ist über <info@cornelsen-experimenta.de> möglich.  
   
@@ -28,7 +24,7 @@ Dem Calliope mini Klassensatz für Grundschulen liegen neben den Handreichungen 
 
 [comment]: # (button fuer bestellen)
 
-### Klassensatz SEK I
+## Klassensatz SEK I
 
 Der Klassensatz für den Einsatz ab der SEK I bietet die Möglichkeit, den Calliope mini einfach und schnell (dank der integrierten Grove-Adapter) mit externen Sensoren und Aktoren zu erweitern.
 
@@ -39,7 +35,7 @@ Der Klassensatz für den Einsatz ab der SEK I bietet die Möglichkeit, den Calli
 
 [comment]: # (button fuer bestellen)
 
-### Calliope mini Starterbox
+## Calliope mini Starterbox
 
 Die Calliope mini Starterbox enthält, neben dem Calliope mini, einen Batteriehalter, 2 AAA Batterien, ein USB Kabel, ein Gummiband und eine Schnellstart-Anleitung.  
 

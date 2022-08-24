@@ -2,23 +2,42 @@
 <script>
 	import { page } from '$app/stores'
 
+    export let prev = null;
+    export let next = null;
+    export let currKategorie = null;
+
+    let allPagesFlat = [];
+    let allPages = [];
+
 	$: active = $page.url.pathname;
+    $: currentIndex = allPagesFlat.findIndex(x => ('/'+x.slug+'/' === active || '/'+x.slug === active));
+    $: currKategorie = allPages?.find(x => ( (active).startsWith('/'+x?.slug) ));
+    
+
+    $: prev = (allPagesFlat.length > 0) ? allPagesFlat[currentIndex-1] : null;
+    $: curr = allPagesFlat[currentIndex] ?? null;
+    $: next = (currentIndex < allPagesFlat.length) ? allPagesFlat[currentIndex+1] : null;
+
+    function getPrevNext(slug, arr){
+        
+        console.log(currIndex)
+    }
 
     async function getMenuItems(){
     let menuItems = await fetch(`/docs.json`).then((res) => res.json());
-    console.log(menuItems)
 
     for (var item of menuItems) {
         const url = `/${item.slug}.json`;
         const kategorieItems = await fetch(url).then((res) => res.json());
         item.subpages = kategorieItems;
+        allPagesFlat = [...allPagesFlat, ...item.subpages]
     }
+    allPages = menuItems;
 
-	
     return menuItems
     }
 
-    const menuItems = getMenuItems();
+    const menuItems = getMenuItems();    
 
 </script>
 
@@ -33,11 +52,13 @@
                 {:then items}
                     {#each items as item}
                         <li>
-                            <h2>{item.title}</h2>
+                            <a sveltekit:prefetch href="/{item.slug}/" on:click={()=>{active = '/'+item.slug;}}>
+                                <h2>{item.title}</h2>
+                            </a>
                             <ol>
                                 {#each item.subpages as page}
                                     <li class:active={active.startsWith('/'+page.slug)}>
-                                            <a sveltekit:prefetch href="/{page.slug}/" on:click={()=>{active=page.slug}}>
+                                            <a sveltekit:prefetch href="/{page.slug}/" on:click={()=>{active = '/'+page.slug;}}>
                                                 {page.title}
                                             </a>
                                     </li>

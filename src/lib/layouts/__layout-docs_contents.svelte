@@ -8,21 +8,38 @@
     let headings = [];
     let desktop = false;
     $: hide = (headings.length < 2);
-    $: gridColumns = (hide || !desktop) ? '' : ' 200px';
-    $: gridMaxWidth = (hide || !desktop) ? 1 : 2;
+    $: gridColumns = (!desktop) ? '' : ' 200px';
+    $: gridMaxWidth = (!desktop) ? 1 : 2;
+
+    let currKategorie = null;
+
 </script>
 
 <div style='grid-template-columns: 200px 1fr {gridColumns}; max-width: calc(75ch + {gridMaxWidth} * (200px + 20px))'>
 
     <aside>
-        <DocsMenu />
+        <DocsMenu bind:currKategorie={currKategorie} />
     </aside>
 
     <main>
-        <slot />
+        {#if currKategorie != null}
+            <h1>{currKategorie.title}</h1>
+            <ol>
+                {#each currKategorie.subpages as page}
+                    <li>
+                        <a sveltekit:prefetch href="/{page.slug}/">
+                            <h3>{page.title}</h3>
+                            <p>{page.description}</p>
+                        </a>
+                        <hr>
+                    </li>               
+                {/each}
+            </ol>
+        {/if}
+        <!-- <slot /> -->
     </main>
     
-    <Toc title="Auf dieser Seite" {headingSelector} {breakpoint} {hide}
+    <Toc title="Auf dieser Seite" {headingSelector} {breakpoint} hide={true}
         bind:headings={headings} 
         bind:desktop={desktop}
     />
